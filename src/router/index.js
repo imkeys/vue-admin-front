@@ -2,13 +2,22 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 // Router Modules
-import dashboardRouter from './modules/dashboard'
+// import adminRouter from './modules/admin'
 
 Vue.use(Router)
 
 // constantRoutes
 export const constantRoutes = [
-  dashboardRouter,
+  // adminRouter,
+  {
+    path: '/{index}?',
+    redirect: '/admin'
+  },
+  {
+    path: '/admin',
+    name: '概况',
+    component: () => import('@/views/admin/index.vue')
+  },
   {
     path: '/login',
     name: '登录',
@@ -21,12 +30,15 @@ export const constantRoutes = [
   },
   {
     path: '*',
-    redirect: '/404'
+    redirect: '/404',
+    hidden: true
   }
 ]
 
 const createRouter = () => new Router({
-  scrollBehavior: () => ({ y: 0 }),
+  scrollBehavior: () => ({
+    y: 0
+  }),
   routes: constantRoutes
 })
 
