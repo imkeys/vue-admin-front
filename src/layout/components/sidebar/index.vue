@@ -22,8 +22,9 @@ export default {
       routes: []
     }
   },
-  created: {
-    this.routes = $router.options.routes
+  created: {},
+  mounted () {
+    this.routes = this.$router.options.routes
   },
   computed: {}
 }
