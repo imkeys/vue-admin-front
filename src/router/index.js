@@ -2,31 +2,35 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 // Router Modules
-// import adminRouter from './modules/admin'
+import adminRouter from './modules/admin'
+import zujianRouter from './modules/zujian'
 
 Vue.use(Router)
 
 // constantRoutes
 export const constantRoutes = [
-  // adminRouter,
   {
-    path: '/{index}?',
-    redirect: '/admin'
+    path: '/',
+    redirect: '/admin',
+    hidden: true
   },
-  {
-    path: '/admin',
-    name: '概况',
-    component: () => import('@/views/admin/index.vue')
-  },
+  adminRouter,
+  zujianRouter,
   {
     path: '/login',
-    name: '登录',
-    component: () => import('@/views/login/index')
+    name: 'login',
+    component: () => import('@/views/login/index'),
+    meta: {
+      icon: 'icon-tuichudenglu'
+    }
   },
   {
     path: '/404',
-    name: '404',
-    component: () => import('@/views/error-page/404')
+    name: 'notFind',
+    component: () => import('@/views/error-page/404'),
+    meta: {
+      icon: 'icon-bug'
+    }
   },
   {
     path: '*',

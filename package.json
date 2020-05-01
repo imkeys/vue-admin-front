@@ -11,7 +11,9 @@
     "package": "git pull && npm run build && node upload && git add . && git commit -m 'package' &&  git push ",
     "lint": "vue-cli-service lint --fix"
   },
-  "dependencies": {},
+  "dependencies": {
+    "vue-i18n": "^8.17.4"
+  },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",

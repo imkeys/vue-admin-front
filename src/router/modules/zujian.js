@@ -1,24 +1,29 @@
-import { Layout } from '@/layout'
-
-// 组件使用
-import zujianchuancan from '@/views/zujianchuancan/index.vue'
-import zujianhua from '@/views/zujianhua/index.vue'
+import Layout from '@/layout'
 
 export default {
   path: '/zujian',
-  name: '组件',
+  name: 'zujian',
   component: Layout,
   redirect: '/zujian/zujianhua',
+  meta: {
+    icon: 'icon-chanpin'
+  },
   children: [
     {
       path: '/zujian/zujianhua',
-      name: '组件化',
-      component: zujianhua
+      name: 'zujianhua',
+      component: () => import('@/views/zujianhua/index.vue'),
+      meta: {
+        icon: 'icon-chanpin'
+      }
     },
     {
       path: '/zujian/zujianhua',
-      name: '组件传参',
-      component: zujianchuancan
+      name: 'zujianchuancan',
+      component: () => import('@/views/zujianchuancan/index.vue'),
+      meta: {
+        icon: 'icon-chanpin'
+      }
     }
   ]
 }

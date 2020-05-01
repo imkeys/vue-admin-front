@@ -1,0 +1,10 @@
+{
+  "language": "English",
+  "navi": {
+    "login": "login",
+    "notFind": "404",
+    "admin": "admin",
+    "zujian": "zujian",
+    "zujianchuancan": "zujianchuancan"
+  }
+}

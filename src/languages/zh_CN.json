@@ -1,0 +1,10 @@
+{
+  "language": "中文",
+  "navi": {
+    "login": "登录",
+    "notFind": "404",
+    "admin": "概况",
+    "zujian": "组件",
+    "zujianchuancan": "组件传参"
+  }
+}

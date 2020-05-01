@@ -2,14 +2,20 @@ import Layout from '@/layout'
 
 export default {
   path: '/',
-  name: '概况',
+  name: 'admin',
   component: Layout,
   redirect: '/admin',
+  meta: {
+    icon: 'icon-tiaosepan'
+  },
   children: [
     {
       path: '/admin',
-      name: 'Admin',
-      component: () => import('@/views/admin/index.vue')
+      name: 'admin',
+      component: () => import('@/views/admin/index.vue'),
+      meta: {
+        icon: 'icon-tiaosepan'
+      }
     }
   ]
 }

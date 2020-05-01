@@ -63,6 +63,8 @@ a {
 	content: '';
 	display: block;
 	clear: both;
+	line-height: 0;
+	font-size: 0;
 }
 
 ::-webkit-scrollbar {
