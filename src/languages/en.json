@@ -5,6 +5,9 @@
     "notFind": "404",
     "admin": "admin",
     "zujian": "zujian",
-    "zujianchuancan": "zujianchuancan"
+    "zujianchuancan": "zujianchuancan",
+    "article": "article",
+    "articleList": "article list",
+    "articleListAdd": "article add"
   }
 }

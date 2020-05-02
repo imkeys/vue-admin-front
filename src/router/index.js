@@ -4,6 +4,7 @@ import Router from 'vue-router'
 // Router Modules
 import adminRouter from './modules/admin'
 import zujianRouter from './modules/zujian'
+import articleRouter from './modules/article'
 
 Vue.use(Router)
 
@@ -11,24 +12,27 @@ Vue.use(Router)
 export const constantRoutes = [
   {
     path: '/',
-    redirect: '/admin',
+    redirect: '/login',
     hidden: true
   },
   adminRouter,
   zujianRouter,
+  articleRouter,
   {
     path: '/login',
-    name: 'login',
+    name: '登录',
     component: () => import('@/views/login/index'),
     meta: {
+      title: 'login',
       icon: 'icon-tuichudenglu'
     }
   },
   {
     path: '/404',
-    name: 'notFind',
+    name: '404错误',
     component: () => import('@/views/error-page/404'),
     meta: {
+      title: 'notFind',
       icon: 'icon-bug'
     }
   },

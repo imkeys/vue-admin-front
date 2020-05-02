@@ -91,10 +91,7 @@ export default {
     return {}
   },
   created () {
-    this.$axios
-      .post('https://result.eolinker.com/Y9fD8sD59b6e75646e487c626b0b4aa09f83631ed98d005?uri=/user/login', res => {
-        console.log(res)
-      })
+
   }
 }
 </script>

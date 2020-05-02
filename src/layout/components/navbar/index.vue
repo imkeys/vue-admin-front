@@ -17,6 +17,10 @@
 <script>
 export default {
   name: 'Navbar',
+  created () {
+    console.log(111, this.$store.state)
+  },
+  computed: {},
   methods: {
     changeLanguage (lang) {
       this.$i18n.locale = lang

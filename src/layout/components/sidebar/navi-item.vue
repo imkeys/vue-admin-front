@@ -6,7 +6,7 @@
       class="link"
       :to="item.path">
       <i :class="'iconfont ' + item.meta.icon"></i>
-      <span>{{$t('navi.' + item.name)}}</span>
+      <span>{{$t('navi.' + item.meta.title)}}</span>
     </router-link>
   </dd>
 </template>

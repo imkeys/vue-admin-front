@@ -1,30 +1,30 @@
 import Layout from '@/layout'
 
 export default {
-  path: '/zujian',
-  name: 'zujian',
+  path: '/article',
+  name: '文章',
   component: Layout,
-  redirect: '/zujian/zujianhua',
+  redirect: '/article/list',
   meta: {
-    title: 'zujian',
+    title: 'article',
     icon: 'icon-chanpin'
   },
   children: [
     {
-      path: '/zujian/zujianhua',
-      name: 'zujianhua',
+      path: '/article/list',
+      name: '文章列表',
       component: () => import('@/views/zujianhua/index.vue'),
       meta: {
-        title: 'zujianhua',
+        title: 'articleList',
         icon: 'icon-chanpin'
       }
     },
     {
-      path: '/zujian/zujianhua',
-      name: 'zujianchuancan',
+      path: '/article/list/add',
+      name: '添加文章',
       component: () => import('@/views/zujianchuancan/index.vue'),
       meta: {
-        title: 'zujianchuancan',
+        title: 'articleListAdd',
         icon: 'icon-chanpin'
       }
     }

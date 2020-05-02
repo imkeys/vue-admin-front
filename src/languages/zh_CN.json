@@ -5,6 +5,9 @@
     "notFind": "404",
     "admin": "概况",
     "zujian": "组件",
-    "zujianchuancan": "组件传参"
+    "zujianchuancan": "组件传参",
+    "article": "文章",
+    "articleList": "文章列表",
+    "articleListAdd": "添加文章"
   }
 }
