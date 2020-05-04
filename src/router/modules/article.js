@@ -2,31 +2,43 @@ import Layout from '@/layout'
 
 export default {
   path: '/article',
-  name: '文章',
+  name: 'article',
   component: Layout,
   redirect: '/article/list',
   meta: {
-    title: 'article',
-    icon: 'icon-chanpin'
+    title: 'articleManage',
+    icon: 'icon-wenzhang'
   },
   children: [
     {
       path: '/article/list',
-      name: '文章列表',
-      component: () => import('@/views/zujianhua/index.vue'),
+      component: () => import(/* webpackChunkName: "article" */ '@/views/article/list.vue'),
       meta: {
-        title: 'articleList',
-        icon: 'icon-chanpin'
+        title: 'articleList'
       }
     },
     {
-      path: '/article/list/add',
-      name: '添加文章',
-      component: () => import('@/views/zujianchuancan/index.vue'),
+      path: '/article/type',
+      component: () => import(/* webpackChunkName: "article" */ '@/views/article/type.vue'),
       meta: {
-        title: 'articleListAdd',
-        icon: 'icon-chanpin'
+        title: 'articleType'
       }
+    },
+    {
+      path: '/article/type-add',
+      component: () => import(/* webpackChunkName: "article" */ '@/views/article/type-add.vue'),
+      meta: {
+        title: 'articleTypeAdd'
+      },
+      hidden: true
+    },
+    {
+      path: '/article/list-add',
+      component: () => import(/* webpackChunkName: "article" */ '@/views/article/list-add.vue'),
+      meta: {
+        title: 'articleListAdd'
+      },
+      hidden: true
     }
   ]
 }

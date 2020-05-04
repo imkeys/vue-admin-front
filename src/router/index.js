@@ -3,8 +3,12 @@ import Router from 'vue-router'
 
 // Router Modules
 import adminRouter from './modules/admin'
-import zujianRouter from './modules/zujian'
 import articleRouter from './modules/article'
+import productRouter from './modules/product'
+import orderRouter from './modules/order'
+import userRouter from './modules/user'
+import dataRouter from './modules/data'
+import systemRouter from './modules/system'
 
 Vue.use(Router)
 
@@ -15,26 +19,42 @@ export const constantRoutes = [
     redirect: '/login',
     hidden: true
   },
-  adminRouter,
-  zujianRouter,
-  articleRouter,
   {
     path: '/login',
-    name: '登录',
+    name: 'login',
     component: () => import('@/views/login/index'),
     meta: {
       title: 'login',
       icon: 'icon-tuichudenglu'
-    }
+    },
+    hidden: true
   },
+  adminRouter,
+  articleRouter,
+  productRouter,
+  orderRouter,
+  userRouter,
+  dataRouter,
+  systemRouter,
   {
     path: '/404',
-    name: '404错误',
+    name: 'notFind',
     component: () => import('@/views/error-page/404'),
     meta: {
       title: 'notFind',
       icon: 'icon-bug'
-    }
+    },
+    hidden: true
+  },
+  {
+    path: '/500',
+    name: 'serveError',
+    component: () => import('@/views/error-page/500'),
+    meta: {
+      title: 'serveError',
+      icon: 'icon-bug'
+    },
+    hidden: true
   },
   {
     path: '*',

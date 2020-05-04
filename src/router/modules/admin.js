@@ -6,12 +6,13 @@ export default {
   redirect: '/admin',
   meta: {
     title: 'admin',
-    icon: 'icon-tiaosepan'
+    icon: 'icon-zhuye'
   },
   children: [
     {
       path: '/admin',
-      component: () => import('@/views/admin/index.vue')
+      component: () => import(/* webpackChunkName: "admin" */ '@/views/admin/index.vue'),
+      meta: {}
     }
   ]
 }

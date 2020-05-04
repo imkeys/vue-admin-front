@@ -1,28 +1,41 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" :class="classObj">
     <sidebar class="sidebar" />
     <div class="container">
-      <div class="header">
-        <navbar class="navbar" />
-        <tags-view class="tags-view" />
+      <div class="topper">
+        <menubar class="menubar" />
+        <bread-crumb class="bread-crumb" />
       </div>
-      <app-main class="content" />
+      <div class="content">
+        <app-main class="context" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { sidebar, navbar, tagsView, appMain } from './components'
+import { mapGetters } from 'vuex'
+import { sidebar, menubar, breadCrumb, appMain } from './components'
 
 export default {
   name: 'Layout',
   components: {
     sidebar,
-    navbar,
-    tagsView,
+    menubar,
+    breadCrumb,
     appMain
   },
-  computed: {},
+  computed: {
+    ...mapGetters([
+      'sidebar'
+    ]),
+    classObj () {
+      return {
+        '': !this.sidebar.opened,
+        'opend': this.sidebar.opened
+      }
+    }
+  },
   methods: {}
 }
 </script>
@@ -30,6 +43,14 @@ export default {
 <style lang="less" scoped>
   .wrapper {
     position: relative;
+    &.opend {
+      .sidebar {
+        width: 60px;
+      }
+      .container {
+        margin: 0 0 0 60px;
+      }
+    }
   }
 
   .sidebar {
@@ -40,30 +61,37 @@ export default {
     z-index: 10;
     width: 200px;
     background: #304156;
+    transition: all .2s ease;
   }
 
   .container {
+    position: relative;
     margin: 0 0 0 200px;
+    transition: all .2s ease;
   }
 
-  .header {
+  .topper {
     position: relative;
     z-index: 2;
     background: #ffffff;
     box-shadow: 0 3px 3px rgba(0, 0, 0, .1);
-    .navbar {
+    .menubar {
       position: relative;
       z-index: 2;
       height: 50px;
       background: #ffffff;
     }
-    .tags-view {
-      height: 40px;
+    .bread-crumb {
+      height: 45px;
       background: #f5f5f5;
     }
   }
 
   .content {
     min-height: calc(100vh - 90px);
+    padding: 12px;
+    .context {
+      position: relative;
+    }
   }
 </style>

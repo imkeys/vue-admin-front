@@ -7,26 +7,26 @@
       :rules="loginRules">
       <el-form-item prop="username">
         <div class="label">
-          <label for="">姓名：</label>
+          <label for="">{{ $t('login.userName') }}：</label>
         </div>
         <div class="control">
           <el-input
             ref="username"
             v-model="loginForm.username"
-            placeholder="请输入账号">
+            :placeholder="$t('login.userName')">
           </el-input>
         </div>
       </el-form-item>
       <el-form-item prop="password">
         <div class="label">
-          <label for="">密码：</label>
+          <label for="">{{ $t('login.password') }}：</label>
         </div>
         <div class="control">
           <el-input
             type="password"
             ref="password"
             v-model="loginForm.password"
-            placeholder="请输入密码">
+            :placeholder="$t('login.password')">
           </el-input>
         </div>
       </el-form-item>
@@ -34,7 +34,7 @@
         <el-button
           type="primary"
           :loading="loading"
-          @click="onLogin">登录</el-button>
+          @click="onLogin">{{ $t('login.sinIn') }}</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -48,22 +48,22 @@ export default {
   data () {
     const validateUsername = (rule, value, callback) => {
       if (!validUsername(value)) {
-        callback(new Error('请输入用户名'))
+        callback(new Error(this.$i18n.t('login.userNamePlaceholder')))
       } else {
         callback()
       }
     }
     const validatePassword = (rule, value, callback) => {
       if (!validPassword(value)) {
-        callback(new Error('请输入密码'))
+        callback(new Error(this.$i18n.t('login.passwordPlaceholder')))
       } else {
         callback()
       }
     }
     return {
       loginForm: {
-        username: 'liqingyun',
-        password: '123456'
+        username: '',
+        password: ''
       },
       loading: false,
       loginRules: {
@@ -78,14 +78,6 @@ export default {
           validator: validatePassword
         }]
       }
-    }
-  },
-  created () {
-    let token = this.$store.state.user.token
-    if (token) {
-      this.$router.push({
-        path: '/admin'
-      })
     }
   },
   methods: {
@@ -104,7 +96,10 @@ export default {
               this.loading = false
             })
         } else {
-          console.log('error submit!!')
+          this.$message({
+            type: 'error',
+            message: this.$i18n.t('login.loginError')
+          })
           return false
         }
       })

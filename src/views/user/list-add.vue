@@ -1,17 +1,15 @@
 <template>
   <div>
-    <p>主页</p>
+    <p>添加用户</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Admin',
+  name: '',
+  components: {},
   data () {
     return {}
-  },
-  created () {
-
   }
 }
 </script>
