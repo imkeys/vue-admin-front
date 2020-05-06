@@ -1,5 +1,8 @@
 {
   "language": "中文",
+  "common": {
+    "error": "发生错误"
+  },
   "sidebar": {
     "admin": "主页",
     "articleManage": "文章管理",
@@ -36,5 +39,12 @@
     "userNamePlaceholder": "请输入用户名",
     "passwordPlaceholder": "请输入密码",
     "loginError": "登录失败，稍后再试"
+  },
+  "system": {
+    "changePassword": "修改密码",
+    "password": "当前密码",
+    "newPassword": "新密码",
+    "confirmPassword": "确认密码",
+    "confirmModification": "确认修改"
   }
 }

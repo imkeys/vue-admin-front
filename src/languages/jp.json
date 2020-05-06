@@ -1,5 +1,8 @@
 {
   "language": "日本語",
+  "common": {
+    "error": "エラーが発生しました"
+  },
   "sidebar": {
     "admin": "ホームページ",
     "articleManage": "記事の管理",
@@ -36,5 +39,12 @@
     "userNamePlaceholder": "アカウントを入力してください",
     "passwordPlaceholder": "パスワードを入力してください",
     "loginError": "ログインに失敗しました。後でテストします。"
+  },
+  "system": {
+    "changePassword": "パスワードを変更",
+    "password": "現在",
+    "newPassword": "新",
+    "confirmPassword": "確認",
+    "confirmModification": "変更の確認"
   }
 }

@@ -74,7 +74,7 @@ export default {
     position: relative;
     z-index: 2;
     background: #ffffff;
-    box-shadow: 0 3px 3px rgba(0, 0, 0, .1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
     .menubar {
       position: relative;
       z-index: 2;
@@ -90,6 +90,7 @@ export default {
   .content {
     min-height: calc(100vh - 90px);
     padding: 12px;
+    background: #f9f9f9;
     .context {
       position: relative;
     }

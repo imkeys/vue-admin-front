@@ -1,5 +1,8 @@
 {
   "language": "English",
+  "common": {
+    "error": "There are errors"
+  },
   "sidebar": {
     "admin": "Home",
     "articleManage": "Manage",
@@ -36,5 +39,12 @@
     "userNamePlaceholder": "please enter your username",
     "passwordPlaceholder": "please enter your password",
     "loginError": "Login failed, try again later"
+  },
+  "system": {
+    "changePassword": "Change Password",
+    "password": "Current",
+    "newPassword": "New",
+    "confirmPassword": "Confirm",
+    "confirmModification": "Confirm Modification"
   }
 }

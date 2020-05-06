@@ -84,5 +84,8 @@ export default {
     color: #97a8be;
     cursor: text;
   }
+  a {
+    font-weight: normal;
+  }
 }
 </style>

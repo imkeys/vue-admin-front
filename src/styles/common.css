@@ -87,3 +87,12 @@ a {
 .el-dropdown-menu .el-dropdown-menu__item span {
   display: block;
 }
+.el-card .el-card__header {
+  padding: 8px 20px;
+}
+.el-card .el-card__header .thead {
+  position: relative;
+}
+.el-card .el-card__header .thead h2 {
+  font-weight: normal;
+}
