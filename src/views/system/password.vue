@@ -17,6 +17,7 @@
               <el-input
                 type="password"
                 ref="password"
+                show-password
                 v-model="form.password"></el-input>
             </el-form-item>
             <el-form-item
@@ -25,6 +26,7 @@
               <el-input
                 type="password"
                 ref="newPassword"
+                show-password
                 v-model="form.newPassword"></el-input>
             </el-form-item>
             <el-form-item
@@ -33,6 +35,7 @@
               <el-input
                 type="password"
                 ref="confirmPassword"
+                show-password
                 v-model="form.confirmPassword"></el-input>
             </el-form-item>
             <el-form-item>
@@ -63,6 +66,13 @@ export default {
         callback()
       }
     }
+    const validateConfirmPassword = (rule, value, callback) => {
+      if (value !== this.$refs.newPassword.value) {
+        callback(new Error(this.$i18n.t('login.confirmPlaceholder')))
+      } else {
+        callback()
+      }
+    }
     return {
       form: {
         password: '',
@@ -84,7 +94,7 @@ export default {
         confirmPassword: [{
           required: true,
           trigger: 'blur',
-          validator: validatePassword
+          validator: validateConfirmPassword
         }]
       }
     }
@@ -111,12 +121,6 @@ export default {
                 reject(error)
               })
           })
-        } else {
-          this.$message({
-            type: 'error',
-            message: this.$i18n.t('common.error')
-          })
-          return false
         }
       })
     }

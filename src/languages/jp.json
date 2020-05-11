@@ -38,6 +38,7 @@
     "sinIn": "ログイン",
     "userNamePlaceholder": "アカウントを入力してください",
     "passwordPlaceholder": "パスワードを入力してください",
+    "confirmPlaceholder": "パスワードを再入力",
     "loginError": "ログインに失敗しました。後でテストします。"
   },
   "system": {

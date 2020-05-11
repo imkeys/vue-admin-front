@@ -38,6 +38,7 @@
     "sinIn": "Sing In",
     "userNamePlaceholder": "please enter your username",
     "passwordPlaceholder": "please enter your password",
+    "confirmPlaceholder": "please enter your password agin",
     "loginError": "Login failed, try again later"
   },
   "system": {

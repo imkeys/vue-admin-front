@@ -38,6 +38,7 @@
     "sinIn": "登录",
     "userNamePlaceholder": "请输入用户名",
     "passwordPlaceholder": "请输入密码",
+    "confirmPlaceholder": "再次输入密码",
     "loginError": "登录失败，稍后再试"
   },
   "system": {
