@@ -3,26 +3,31 @@ import { getToken, setToken, removeToken } from '@/utils/auth'
 
 const state = {
   token: getToken(),
-  user: {
-    name: window.localStorage.getItem('user.name'),
-    nickName: window.localStorage.getItem('user.nickName'),
-    avatar: window.localStorage.getItem('user.avatar')
-  }
+  user: JSON.parse(window.localStorage.getItem('user'))
+  // user: {
+  //   name: window.localStorage.getItem('user.name'),
+  //   nickName: window.localStorage.getItem('user.nickName'),
+  //   avatar: window.localStorage.getItem('user.avatar')
+  // }
 }
 
 const mutations = {
   SET_TOKEN: (state, token) => {
     state.token = token
   },
-  SET_NAME: (state, username) => {
-    state.user.name = username
-    window.localStorage.setItem('user.name', username)
-    window.localStorage.setItem('user.nickName', username)
-  },
-  SET_AVATAR: (state, avatar) => {
-    state.user.avatar = avatar
-    window.localStorage.setItem('user.avatar', avatar)
+  SET_USER: (state, user) => {
+    state.user = user
+    window.localStorage.setItem('user', JSON.stringify(user))
   }
+  // SET_NAME: (state, username) => {
+  //   state.user.name = username
+  //   window.localStorage.setItem('user.name', username)
+  //   window.localStorage.setItem('user.nickName', username)
+  // },
+  // SET_AVATAR: (state, avatar) => {
+  //   state.user.avatar = avatar
+  //   window.localStorage.setItem('user.avatar', avatar)
+  // }
 }
 
 const actions = {
@@ -36,8 +41,9 @@ const actions = {
         .then(res => {
           const { data } = res
           commit('SET_TOKEN', data.token)
-          commit('SET_NAME', data.username)
-          commit('SET_AVATAR', data.avatar)
+          commit('SET_USER', data)
+          // commit('SET_NAME', data.username)
+          // commit('SET_AVATAR', data.avatar)
           setToken(data.token)
           resolve()
         })
