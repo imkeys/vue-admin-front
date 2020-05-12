@@ -1,8 +1,8 @@
 {
-  "name": "myvue",
+  "name": "vue-admin-lite",
   "version": "1.0.0",
   "description": "none",
-  "author": "liqingyun",
+  "author": "liqingyun <liqingyun.chn@qq.com>",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -11,7 +11,14 @@
     "package": "git pull && npm run build && node upload && git add . && git commit -m 'package' &&  git push ",
     "lint": "vue-cli-service lint --fix"
   },
-  "dependencies": {},
+  "dependencies": {
+    "js-cookie": "^2.2.1",
+    "nprogress": "0.2.0",
+    "screenfull": "^5.0.2",
+    "vue-i18n": "^8.17.4",
+    "vuex": "^3.3.0",
+    "path-to-regexp": "2.4.0"
+  },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",
@@ -26,7 +33,8 @@
     "less-loader": "^5.0.0",
     "postcss-import": "^12.0.1",
     "postcss-url": "^8.0.0",
-    "vue-template-compiler": "2.6.6"
+    "vue-template-compiler": "2.6.11",
+    "mockjs": "^1.0.1-beta3"
   },
   "engines": {
     "node": ">= 6.0.0",

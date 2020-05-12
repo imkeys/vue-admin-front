@@ -1,41 +1,27 @@
 <template>
-  <div id="sidebar">
-    <el-scrollbar>
-      <el-menu>
-        <div
-          v-for="(item, index) in routes"
-          :key="item.path"
-          :item="item"
-          :index="index">
-          <span>{{item.name}}</span>
-        </div>
-      </el-menu>
-    </el-scrollbar>
+  <div>
+    <logo />
+    <navi />
   </div>
 </template>
 
 <script>
+import logo from './logo.vue'
+import navi from './navi.vue'
+
 export default {
   name: 'Sidebar',
+  components: {
+    logo,
+    navi
+  },
   data () {
-    return {
-      routes: []
-    }
+    return {}
   },
-  created: {
-    this.routes = $router.options.routes
-  },
-  computed: {}
+  methods: {}
 }
 </script>
 
 <style lang="less" scoped>
-  #sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    z-index: 10;
-    background: #304156;
-  }
+
 </style>

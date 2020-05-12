@@ -39,11 +39,14 @@ module.exports = {
     devServer: {
       disableHostCheck: true,
       port: '9001',
-      open: 'http://localhost:9001/#login',
+      open: 'http://localhost:9001/#/login',
       proxy: {
         '/': {
-          target: 'http://192.168.50.131:9001/',
-          changeOrigin: true
+          target: 'https://result.eolinker.com',
+          changeOrigin: true,
+          pathRewrite: {
+            '^/api/': '/Y9fD8sD59b6e75646e487c626b0b4aa09f83631ed98d005?uri=/'
+          }
         }
       }
     }
