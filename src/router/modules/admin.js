@@ -3,16 +3,19 @@ import Layout from '@/layout'
 export default {
   path: '/admin',
   component: Layout,
-  redirect: '/admin',
+  redirect: '/home',
   meta: {
     title: 'admin',
-    icon: 'icon-zhuye'
+    icon: 'icon-zhuye',
+    roles: ['maintain']
   },
   children: [
     {
-      path: '/admin',
+      path: '/home',
       component: () => import(/* webpackChunkName: "admin" */ '@/views/admin/index.vue'),
-      meta: {}
+      meta: {
+        roles: ['maintain']
+      }
     }
   ]
 }

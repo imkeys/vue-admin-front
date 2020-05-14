@@ -5,7 +5,7 @@
       text-color="#ffffff"
       active-text-color="#3792ff">
       <navi-item
-        v-for="(item, index) in routes"
+        v-for="(item, index) in $matchedRoutes.currentRoute"
         :key="index"
         :item="item" />
     </dl>
@@ -26,7 +26,7 @@ export default {
     }
   },
   mounted () {
-    this.routes = this.$router.options.routes
+    this.routes = this.$matchedRoutes.currentRoute
   }
 }
 </script>

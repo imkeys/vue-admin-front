@@ -88,8 +88,8 @@ export default {
           this.$store.dispatch('user/login', this.loginForm)
             .then(() => {
               this.$router.push({
-                path: '/admin'
-              })
+                path: '/home'
+              }).catch(() => {})
               this.loading = false
             })
             .catch(() => {

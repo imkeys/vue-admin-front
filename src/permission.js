@@ -1,9 +1,20 @@
-import router from './router'
+import Vue from 'vue'
+import router, { BASIC_ROUTES, ASYNC_ROUTES } from './router'
+import { isLogin, hasToken, toggleLoginStatus, getFilteredRoutes, getGroup } from '@/utils/auth'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
-import { getToken } from '@/utils/auth'
 
-const whiteList = ['/login']
+const routeInstance = new Vue({
+  data () {
+    return {
+      currentRoute: []
+    }
+  }
+})
+
+Vue.prototype.$matchedRoutes = routeInstance
+
+const WHITE_LIST = ['/login']
 
 NProgress.configure({
   showSpinner: false
@@ -11,26 +22,34 @@ NProgress.configure({
 
 router.beforeEach(async (to, from, next) => {
   NProgress.start()
-  const hasToken = getToken()
 
-  if (hasToken) {
+  if (isLogin()) {
     if (to.path === '/login') {
       next({
-        path: '/admin'
+        path: '/home'
       })
-      NProgress.done()
     } else {
-      next()
-      NProgress.done()
+      if (hasToken) {
+        next()
+      } else {
+        toggleLoginStatus(true)
+        const roles = getGroup()
+        const filteredRoutes = getFilteredRoutes(ASYNC_ROUTES, roles)
+        router.addRoutes(filteredRoutes)
+        routeInstance.currentRoute = BASIC_ROUTES.concat(filteredRoutes)
+        next({
+          ...to,
+          replace: true
+        })
+      }
     }
   } else {
-    if (whiteList.includes(to.path)) {
+    if (WHITE_LIST.includes(to.path)) {
       next()
     } else {
       next({
-        path: '/login'
+        path: `/login?redirect=${to.path}`
       })
-      NProgress.done()
     }
   }
 })

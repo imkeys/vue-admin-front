@@ -12,10 +12,10 @@ import systemRouter from './modules/system'
 
 Vue.use(Router)
 
-// constantRoutes
-export const constantRoutes = [
+// BASIC_ROUTES
+export const BASIC_ROUTES = [
   {
-    path: '/',
+    path: '/(index)?',
     redirect: '/login',
     hidden: true
   },
@@ -23,12 +23,23 @@ export const constantRoutes = [
     path: '/login',
     name: 'login',
     component: () => import('@/views/login/index'),
-    meta: {
-      title: 'login',
-      icon: 'icon-tuichudenglu'
-    },
     hidden: true
   },
+  {
+    path: '/404',
+    name: 'notFind',
+    component: () => import('@/views/error-page/404'),
+    hidden: true
+  },
+  {
+    path: '/500',
+    name: 'serveError',
+    component: () => import('@/views/error-page/500'),
+    hidden: true
+  }
+]
+
+export const ASYNC_ROUTES = [
   adminRouter,
   articleRouter,
   productRouter,
@@ -37,26 +48,7 @@ export const constantRoutes = [
   dataRouter,
   systemRouter,
   {
-    path: '/404',
-    name: 'notFind',
-    component: () => import('@/views/error-page/404'),
-    meta: {
-      title: 'notFind',
-      icon: 'icon-bug'
-    },
-    hidden: true
-  },
-  {
-    path: '/500',
-    name: 'serveError',
-    component: () => import('@/views/error-page/500'),
-    meta: {
-      title: 'serveError',
-      icon: 'icon-bug'
-    },
-    hidden: true
-  },
-  {
+    noAuth: true,
     path: '*',
     redirect: '/404',
     hidden: true
@@ -67,9 +59,16 @@ const createRouter = () => new Router({
   scrollBehavior: () => ({
     y: 0
   }),
-  routes: constantRoutes
+  linkActiveClass: 'active',
+  linkExactActiveClass: '',
+  routes: BASIC_ROUTES
 })
 
 const router = createRouter()
+
+export function resetRouter () {
+  const newRouter = createRouter()
+  router.matcher = newRouter.matcher
+}
 
 export default router
