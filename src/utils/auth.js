@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie'
-
+import store from '@/store'
 const TokenKey = 'access-token'
 
 export let hasToken = false
@@ -8,13 +8,8 @@ export function toggleLoginStatus (status = false) {
   hasToken = status
 }
 
-export function isLogin () {
-  return !!Cookies.get(TokenKey)
-}
-
 export function getGroup () {
-  const user = JSON.parse(window.localStorage.getItem('user'))
-  return [user.group]
+  return [store.getters.user.group]
 }
 
 export function getToken () {

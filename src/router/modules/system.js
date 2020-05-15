@@ -7,7 +7,8 @@ export default {
   redirect: '/system/profile',
   meta: {
     title: 'system',
-    icon: 'icon-xitong'
+    icon: 'icon-xitong',
+    roles: ['staff']
   },
   children: [
     {
@@ -15,7 +16,8 @@ export default {
       name: 'profile',
       component: () => import(/* webpackChunkName: "system" */ '@/views/system/profile.vue'),
       meta: {
-        title: 'profile'
+        title: 'profile',
+        roles: ['staff']
       }
     },
     {
@@ -23,7 +25,8 @@ export default {
       name: 'password',
       component: () => import(/* webpackChunkName: "system" */ '@/views/system/password.vue'),
       meta: {
-        title: 'password'
+        title: 'password',
+        roles: ['staff']
       }
     }
   ]

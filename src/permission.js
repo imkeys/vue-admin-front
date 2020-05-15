@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import router, { BASIC_ROUTES, ASYNC_ROUTES } from './router'
-import { isLogin, hasToken, toggleLoginStatus, getFilteredRoutes, getGroup } from '@/utils/auth'
+import { getToken, hasToken, toggleLoginStatus, getFilteredRoutes, getGroup } from '@/utils/auth'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
@@ -23,7 +23,7 @@ NProgress.configure({
 router.beforeEach(async (to, from, next) => {
   NProgress.start()
 
-  if (isLogin()) {
+  if (getToken()) {
     if (to.path === '/login') {
       next({
         path: '/home'

@@ -59,8 +59,8 @@ const createRouter = () => new Router({
   scrollBehavior: () => ({
     y: 0
   }),
-  linkActiveClass: 'active',
-  linkExactActiveClass: '',
+  linkActiveClass: 'router-link-active',
+  linkExactActiveClass: 'router-link-active',
   routes: BASIC_ROUTES
 })
 
