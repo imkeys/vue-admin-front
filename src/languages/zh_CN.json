@@ -1,7 +1,8 @@
 {
   "language": "中文",
   "common": {
-    "error": "发生错误"
+    "error": "发生错误",
+    "confirmModification": "确认修改"
   },
   "sidebar": {
     "admin": "主页",
@@ -26,7 +27,7 @@
     "userGradeAdd": "添加等级",
     "data": "数据统计",
     "system": "系统设置",
-    "profile": "账号资料",
+    "profile": "用户信息",
     "password": "修改密码"
   },
   "menubar": {
@@ -41,11 +42,12 @@
     "confirmPlaceholder": "再次输入密码",
     "loginError": "登录失败，稍后再试"
   },
-  "system": {
-    "changePassword": "修改密码",
+  "changePassword": {
     "password": "当前密码",
     "newPassword": "新密码",
-    "confirmPassword": "确认密码",
-    "confirmModification": "确认修改"
+    "confirmPassword": "确认密码"
+  },
+  "profile": {
+    "sex": "性别"
   }
 }

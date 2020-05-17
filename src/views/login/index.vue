@@ -25,6 +25,7 @@
           <el-input
             type="password"
             ref="password"
+            show-password
             v-model="loginForm.password"
             :placeholder="$t('login.password')">
           </el-input>
