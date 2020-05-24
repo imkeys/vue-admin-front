@@ -9,12 +9,23 @@
       width="500px"
       :visible.sync="isVisible"
       :before-close="handleClose">
-      <div>
-        <label for="">标题：</label>
-        <el-input v-model="title" maxLength="30"></el-input>
-        <label for="">标签：</label>
-        <el-input v-model="tag" maxLength="4"></el-input>
-      </div>
+      <el-form
+        ref="form"
+        class="form"
+        :model="form"
+        :rules="rules">
+        <el-form-item
+          label="标题："
+          prop="title">
+          <el-input v-model="form.title" maxLength="30"></el-input>
+        </el-form-item>
+        <el-form-item
+          label="标签："
+          prop="tag">
+          <el-input v-model="form.tag" maxLength="4"></el-input>
+        </el-form-item>
+        <slot name="tag"></slot>
+      </el-form>
       <div
         slot="footer">
         <el-button @click="handleClose">取 消</el-button>
@@ -34,30 +45,39 @@ export default {
   props: {
     element: {
       type: Object,
-      default () {
-        return {
-          title: '',
-          tag: ''
-        }
-      }
+      required: true
     }
   },
   data () {
     return {
       isVisible: false,
       loading: false,
-      title: this.element.title,
-      tag: this.element.tag
+      form: {},
+      rules: {
+        title: [
+          {
+            required: true,
+            trigger: 'blur',
+            message: '请输入标题'
+          }
+        ],
+        tag: [
+          {
+            required: true,
+            trigger: 'blur',
+            message: '请输入标签'
+          }
+        ]
+      }
     }
   },
   methods: {
     showDialog () {
       this.isVisible = true
+      this.form = JSON.parse(JSON.stringify(this.element))
     },
     handleClose () {
       this.isVisible = false
-      this.title = this.element.title
-      this.tag = this.element.tag
     },
     handleConfirm () {
       this.loading = true
@@ -65,11 +85,21 @@ export default {
       setTimeout(() => {
         // 模拟异步数据
         this.isVisible = false
-        this.element.title = this.title
-        this.element.tag = this.tag
         this.loading = false
-      }, 2000)
+        this.element.title = this.form.title
+        this.element.tag = this.form.tag
+      }, 1000)
     }
   }
 }
 </script>
+
+<style lang="less" scoped>
+  .form {
+    display: block;
+    margin: -30px -20px;
+    padding: 20px 20px;
+    border-top: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+  }
+</style>
