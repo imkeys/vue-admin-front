@@ -14,7 +14,7 @@ const service = axios.create({
 service.interceptors.request.use(
   config => {
     if (store.getters.token) {
-      config.headers['access-token'] = getToken()
+      config.headers['authorization'] = getToken()
     }
     return config
   },
@@ -26,16 +26,19 @@ service.interceptors.request.use(
 // response interceptor
 service.interceptors.response.use(
   response => {
-    const res = response.data
+    const { code, error } = response.data
+    if (response.headers.authorization) {
+      response.data = response.headers.authorization
+    }
 
-    if (res.code !== 200) {
+    if (code !== 200) {
       Message({
-        message: res.error || 'Error',
+        message: error || 'Error',
         type: 'error',
         duration: 2 * 1000
       })
 
-      if (res.code === 2000) {
+      if (code === 404) {
         MessageBox.confirm('登录已过期', '警告', {
           confirmButtonText: '重新登陆',
           cancelButtonText: '取消',
@@ -46,9 +49,9 @@ service.interceptors.response.use(
           })
         })
       }
-      return Promise.reject(res.error || 'Error')
+      return Promise.reject(error || 'Error')
     } else {
-      return res
+      return response.data
     }
   },
   error => {

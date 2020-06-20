@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-table
-      :data="news"
+      :data="newsList"
       border
       style="width: 100%">
       <el-table-column
@@ -15,7 +15,7 @@
         label="标题">
       </el-table-column>
       <el-table-column
-        prop="date"
+        prop="createDate"
         label="时间"
         width="200"
         align="center">
@@ -46,6 +46,7 @@
 </template>
 
 <script>
+import { getArticle } from '@/api/article'
 import editRow from './components/edit-row/'
 
 export default {
@@ -55,36 +56,22 @@ export default {
   },
   data () {
     return {
-      news: [
-        {
-          id: 1001,
-          title: '习近平:黄花菜大产业 致富好门路 来到云冈石窟',
-          desc: '',
-          tag: '热门',
-          date: '2020-05-12 15:05:12'
-        },
-        {
-          id: 1002,
-          title: '缓解小微企业工商户房租压力 第12个全国防灾减灾日',
-          desc: '',
-          tag: '社会',
-          date: '2020-05-15 11:21:01'
-        },
-        {
-          id: 1003,
-          title: '以科学和团结精神抗疫 造谣言',
-          desc: '',
-          tag: '国内',
-          date: '2020-05-16 08:41:05'
-        },
-        {
-          id: 1001,
-          title: '今天是汶川地震12周年 深切缅怀地震中遇难同胞',
-          desc: '',
-          tag: '社会',
-          date: '2020-05-22 14:33:35'
-        }
-      ]
+      newsList: []
+    }
+  },
+  created () {
+    this.handleGetArticle()
+  },
+  methods: {
+    handleGetArticle () {
+      getArticle({
+        page: 1
+      }).then(response => {
+        const { list } = response
+        this.newsList = list
+      }).catch(error => {
+        console.log(error)
+      })
     }
   }
 }

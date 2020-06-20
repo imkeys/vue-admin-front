@@ -5,14 +5,14 @@
       class="login-form"
       :model="loginForm"
       :rules="loginRules">
-      <el-form-item prop="username">
+      <el-form-item prop="userName">
         <div class="label">
           <label for="">{{ $t('login.userName') }}：</label>
         </div>
         <div class="control">
           <el-input
-            ref="username"
-            v-model="loginForm.username"
+            ref="userName"
+            v-model="loginForm.userName"
             :placeholder="$t('login.userName')">
           </el-input>
         </div>
@@ -63,21 +63,33 @@ export default {
     }
     return {
       loginForm: {
-        username: '',
-        password: ''
+        userName: 'admin',
+        password: '123456'
       },
       loading: false,
       loginRules: {
-        username: [{
-          required: true,
-          trigger: 'blur',
-          validator: validateUsername
-        }],
-        password: [{
-          required: true,
-          trigger: 'blur',
-          validator: validatePassword
-        }]
+        userName: [
+          {
+            required: true,
+            trigger: 'blur',
+            message: this.$i18n.t('login.userNamePlaceholder')
+          },
+          {
+            trigger: 'blur',
+            validator: validateUsername
+          }
+        ],
+        password: [
+          {
+            required: true,
+            trigger: 'blur',
+            message: this.$i18n.t('login.passwordPlaceholder')
+          },
+          {
+            trigger: 'blur',
+            validator: validatePassword
+          }
+        ]
       }
     }
   },

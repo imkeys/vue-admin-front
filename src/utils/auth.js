@@ -1,15 +1,11 @@
 import Cookies from 'js-cookie'
-import store from '@/store'
 const TokenKey = 'access-token'
+const ADMIN_KEY = 'admin'
 
 export let hasToken = false
 
 export function toggleLoginStatus (status = false) {
   hasToken = status
-}
-
-export function getGroup () {
-  return [store.getters.user.group]
 }
 
 export function getToken () {
@@ -23,8 +19,6 @@ export function setToken (token) {
 export function removeToken () {
   return Cookies.remove(TokenKey)
 }
-
-const ADMIN_KEY = 'admin'
 
 function isMatchedRole (route, allowedRoles) {
   if (route.noAuth) return true

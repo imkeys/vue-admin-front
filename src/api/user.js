@@ -14,3 +14,10 @@ export function logout () {
     method: 'post'
   })
 }
+
+export function getInfo () {
+  return request({
+    url: '/user/getInfo',
+    method: 'get'
+  })
+}
