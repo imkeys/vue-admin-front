@@ -9,7 +9,9 @@
       <dd class="item">
         <el-dropdown class="user">
           <div class="avt">
-            <img class="avatar" :src="user.avatar" alt="">
+            <img
+              class="avatar"
+              :src="user.user_avatar" />
           </div>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item>

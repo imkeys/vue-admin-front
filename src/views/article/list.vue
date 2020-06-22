@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-table
-      :data="newsList"
+      :data="lister"
       border
       style="width: 100%">
       <el-table-column
@@ -11,11 +11,11 @@
         align="center">
       </el-table-column>
       <el-table-column
-        prop="title"
+        prop="article_title"
         label="标题">
       </el-table-column>
       <el-table-column
-        prop="createDate"
+        prop="create_date"
         label="时间"
         width="200"
         align="center">
@@ -50,13 +50,13 @@ import { getArticle } from '@/api/article'
 import editRow from './components/edit-row/'
 
 export default {
-  name: '',
+  name: 'ArticleList',
   components: {
     editRow
   },
   data () {
     return {
-      newsList: []
+      lister: []
     }
   },
   created () {
@@ -68,7 +68,7 @@ export default {
         page: 1
       }).then(response => {
         const { list } = response
-        this.newsList = list
+        this.lister = list
       }).catch(error => {
         console.log(error)
       })
