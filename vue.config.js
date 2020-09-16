@@ -42,10 +42,10 @@ module.exports = {
       open: 'http://localhost:9001/#/login',
       proxy: {
         '/': {
-          target: 'http://localhost:3000', // https://result.eolinker.com
+          target: 'http://localhost:9501',
           changeOrigin: true,
           pathRewrite: {
-            '^/api/': '/api/' // /Y9fD8sD59b6e75646e487c626b0b4aa09f83631ed98d005?uri=/
+            '^/api/': '/api/'
           }
         }
       }
