@@ -45,10 +45,10 @@ export default {
     position: relative;
     &.opend {
       .sidebar {
-        width: 60px;
+        width: 200px;
       }
       .container {
-        margin: 0 0 0 60px;
+        margin: 0 0 0 200px;
       }
     }
   }
@@ -59,14 +59,14 @@ export default {
     top: 0;
     bottom: 0;
     z-index: 10;
-    width: 200px;
+    width: 60px;
     background: #304156;
     transition: all .2s ease;
   }
 
   .container {
     position: relative;
-    margin: 0 0 0 200px;
+    margin: 0 0 0 60px;
     transition: all .2s ease;
   }
 

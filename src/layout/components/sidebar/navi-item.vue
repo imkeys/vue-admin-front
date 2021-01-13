@@ -9,7 +9,7 @@
       <i :class="'iconfont ' + item.meta.icon"></i>
       <span>{{$t('sidebar.' + item.meta.title)}}</span>
       <em
-        v-if="!sidebar.opened"
+        v-if="sidebar.opened"
         :class="classAction">
         <i class="iconfont icon-xia"></i>
       </em>
